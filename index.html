@@ -2,12 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Roman Numerals</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Epilogue', sans-serif;
+
+        }
+
+        body {
+            background: #419197;
+        }
+
+        .container {
+            width: 30%;
+            background: #F5FCCD;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 5px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            flex-direction: column;
+            box-shadow: 1px 1px 15px 5px #419197;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 20px;
+            border: none;
+            transition: 0.3s;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        .form-control:focus {
+            box-shadow: 1px 1px 15px 5px rgba(65, 145, 151, 0.3);
+            outline: none;
+        }
+
+
+        button {
+            margin-top: 25px;
+            display: block;
+            padding: 20px;
+            background: #12486B;
+            color: #F5FCCD;
+            border: none;
+            cursor: pointer;
+            font-family: 'Epilogue', sans-serif;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .error {
+            margin-top: 15px;
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Hello World!</h1>
-    <script src="app.js"></script>
+
+    <div class="container">
+        <h1>Roman Numerals</h1>
+        <input type="number" class="form-control number">
+        <span class="error"></span>
+        <button class="calc">Calculate</button>
+        <div>
+            <h3 class="result"></h3>
+        </div>
+    </div>
+
+
+  <script>
+
+
+
+
+
+      let button = document.querySelector('.calc');
+      let error = document.querySelector('.error');
+
+      button.onclick = () => {
+          let num = document.querySelector('.number').value;
+          if(!((num >= 1) && (num <= 4999))){
+                error.textContent = 'Enter A Valid Number Between 1 And 4999';
+          }else {
+              error.textContent = '';
+              document.querySelector('.result').textContent = `Result: ${int_to_roman(num)}`
+          }
+      }
+
+
+      function int_to_roman(num) {
+
+          let str = String(num).split('').reverse();
+          let result = [];
+
+          str.forEach((value,index)=> {
+
+              let n = value.padEnd(index+1,'0');
+
+              if(n >= 1 && n <= 8) {
+                  if(n>= 1 && n <=3) {
+                      result.unshift('I'.repeat(n));
+                  }else if(n == 4) {
+                      result.unshift('IV');
+                  }else {
+                      result.unshift('V' + 'I'.repeat(n - 5));
+                  }
+              }else if(n == 9) {
+                  result.unshift('IX');
+              }else if(n >= 10 && n <= 80) {
+
+                  if(n >= 10 && n <= 30) {
+                      result.unshift('X'.repeat((n / 10)));
+                  }
+                  else if (n == 40) {
+                      result.unshift('XL');
+                  }else {
+                      result.unshift('L' + 'X'.repeat((n / 10) - 5));
+                  }
+              }else if(n >= 90 && n <= 900) {
+                  if(n == 90) {
+                      result.unshift('XC');
+                  }
+                  else if(n >= 100 && n <= 300) {
+                      result.unshift('C'.repeat((n / 100)));
+                  }else if (n == 400) {
+                      result.unshift('CD');
+                  }else if(n == 900) {
+                      result.unshift('CM');
+                  }else {
+                      result.unshift('D' + 'C'.repeat((n / 100) - 5));
+                  }
+              }else if(n >= 1000) {
+                  result.unshift('M'.repeat(n / 1000))
+              }
+          })
+
+          return result.join('');
+
+      }
+
+
+
+
+      console.log(int_to_roman(2962))
+
+
+  </script>
 </body>
 </html>
