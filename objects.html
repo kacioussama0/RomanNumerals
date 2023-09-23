@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Object</title>
+</head>
+<body>
+  <script>
+        // function Person(name,age,isStudent) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.isStudent = isStudent ? 'You are a Student' : 'You are not a Student';
+        //     this.hello = function () {
+        //         console.log('Hello ' + name)
+        //     };
+        // }
+        //
+        // const Human = new Function("name","age","isStudent",`
+        //
+        //   this.name = name;
+        //     this.age = age;
+        //     this.isStudent = isStudent ? 'You are a Student' : 'You are not a Student';
+        //     this.hello = function () {
+        //         console.log('Hello ' + name)
+        //     };
+        // `)
+        //
+        //
+        // let me = new Person('Oussama',21,true);
+        // let you = new Human('Belkacem',28,false);
+        // console.log(you)
+        // console.log(typeof me)
+        //
+        // console.log(me.name);
+        // console.log(me.age);
+        // console.log(me.isStudent);
+        // me.hello()
+
+
+        let student = {
+            fullName: "Kaci Oussama",
+            dateOfBirth: "07-02-2002",
+            placeOfBirth: "Sidi M'Hamed",
+            job: 'Full Stack Developer'
+        };
+
+        student.address = {
+            city: "El Harrach",
+            state: "Algiers",
+            door: 17
+        };
+
+        console.log(student)
+
+        delete student.address;
+
+        console.log(student)
+
+  </script>
+</body>
+</html>

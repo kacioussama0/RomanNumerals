@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+</head>
+<body>
+
+
+  <script>
+
+    let frontEnd = ["Html","Css","Javascript"];
+    let ages = [2,8,13,5,6,7,2,3,22]
+
+    frontEnd.push("Bootstrap"); // add element in the end of array
+    frontEnd.unshift("React.js"); // add element in the first of array
+    frontEnd.shift(); // delete element in the first of array
+    frontEnd.pop(); // add delete in the last of array
+
+    let filtered = frontEnd.filter(item => item.length <= 3) // filter the array
+    let mapped = frontEnd.map((item,index)=> {
+      return {
+        id: index+1,
+        language: item
+      }
+    })
+
+    let empty = [1,2,3,4];
+
+    empty.fill('Filled',0,4)
+
+    let majors = ages.some((elem)=> {
+        return elem > 18
+    })
+
+    let minors = ages.every((elem)=> {
+      return elem < 18
+    })
+
+    console.log(majors)
+    console.log(minors)
+
+    console.log(frontEnd)
+    console.log(filtered)
+    console.log(mapped)
+    console.log(empty)
+
+
+    let sliced = frontEnd.slice(0,2)
+    console.log(sliced)
+
+    let arr = [[1,2],[3,4],[5,6],[7,8],[9,10]];
+
+    console.log(arr.flat())
+
+
+    frontEnd.forEach((item,index)=> {
+      console.log(index,item)
+    })
+
+    let find = frontEnd.findIndex((value)=> {
+        return value == 'HTML'
+    });
+
+    console.log(find)
+    console.log(frontEnd.includes('Html'))
+
+
+
+
+
+  </script>
+
+
+
+</body>
+</html>
